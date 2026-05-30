@@ -22,11 +22,12 @@
 #include <string>
 #include <vector>
 #include <sys/stat.h>
+#include <filesystem>
 
 using namespace std;
 
-void criarDiretorio(const string& caminho) {
-    mkdir(caminho.c_str(), 0755);
+void criarDiretorio(const std::string& caminho) {
+    std::filesystem::create_directories(caminho);
 }
 
 vector<vector<uint8_t>> lerInstancias(const string& arquivo, int n_pecas) {

@@ -38,7 +38,7 @@ string nomeDirecao(Direcao d);
 
 class Estado {
 public:
-    vector<uint8_t> tabuleiro;
+    uint8_t tabuleiro[16]; 
     int tamanho;
     int n_pecas;
     int pos_vazio;

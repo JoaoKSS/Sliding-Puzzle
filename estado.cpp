@@ -14,7 +14,7 @@
 #include <cmath>
 #include <sstream>
 #include <iomanip>
-#include <algorithm>
+#include <cstring>
 
 using namespace std;
 
@@ -42,15 +42,19 @@ string nomeDirecao(Direcao d) {
 // Construtores
 Estado::Estado()
     : tamanho(0), n_pecas(0), pos_vazio(-1), heuristica(0),
-      custo_g(0), ultimo_movimento(NENHUMA), pai_idx(-1) {}
+      custo_g(0), ultimo_movimento(NENHUMA), pai_idx(-1) {
+    for (int i = 0; i < 16; i++) {
+        tabuleiro[i] = 0;
+    }
+}
 
 Estado::Estado(const vector<uint8_t>& tab, int tam)
-    : tabuleiro(tab), tamanho(tam), n_pecas(tam * tam),
+    : tamanho(tam), n_pecas(tam * tam),
       custo_g(0), ultimo_movimento(NENHUMA), pai_idx(-1) {
     for (int i = 0; i < n_pecas; i++) {
+        tabuleiro[i] = tab[i];
         if (tabuleiro[i] == 0) {
             pos_vazio = i;
-            break;
         }
     }
     calcularHeuristica();
@@ -78,9 +82,9 @@ int Estado::manhattanPeca(int pos, uint8_t peca) const {
  * Conflitos Lineares (Hansson, Mayer & Yung, 1992):
  *
  * Duas peças tj e tk estão em conflito linear se:
- *   1) Ambas estão na mesma linha (ou coluna)
- *   2) A posição objetivo de ambas é nessa mesma linha (ou coluna)
- *   3) Estão em ordem invertida em relação ao objetivo
+ * 1) Ambas estão na mesma linha (ou coluna)
+ * 2) A posição objetivo de ambas é nessa mesma linha (ou coluna)
+ * 3) Estão em ordem invertida em relação ao objetivo
  *
  * Cada conflito requer pelo menos 2 movimentos adicionais.
  */
@@ -173,7 +177,7 @@ bool Estado::ehObjetivo() const {
  * Com objetivo tendo 0 na posição [0][0]:
  * - 8-puzzle (N ímpar): solucionável se inversões é par.
  * - 15-puzzle (N par): solucionável se (inversões + linha_do_vazio) é par.
- *   (linha_do_vazio contada de cima, 0-indexada)
+ * (linha_do_vazio contada de cima, 0-indexada)
  */
 bool Estado::temSolucao() const {
     int inversoes = 0;
@@ -258,7 +262,10 @@ bool Estado::operator>(const Estado& outro) const {
 }
 
 bool Estado::operator==(const Estado& outro) const {
-    return tabuleiro == outro.tabuleiro;
+    if (n_pecas != outro.n_pecas) return false;
+    
+    // Compara o bloco de memória inteiro de uma vez só!
+    return memcmp(tabuleiro, outro.tabuleiro, n_pecas) == 0;
 }
 
 uint64_t Estado::hash() const {
