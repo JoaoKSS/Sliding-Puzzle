@@ -18,6 +18,8 @@
 
 using namespace std;
 
+TipoHeuristica Estado::tipo_heuristica = H_CONFLITOS;
+
 // Funções auxiliares de direção
 Direcao direcaoOposta(Direcao d) {
     switch (d) {
@@ -151,11 +153,21 @@ int Estado::calcularConflitosLineares() const {
 }
 
 void Estado::calcularHeuristica() {
+    if (tipo_heuristica == H_NENHUMA) {
+        heuristica = 0;
+        return;
+    }
+
     int manhattan = 0;
     for (int i = 0; i < n_pecas; i++) {
         manhattan += manhattanPeca(i, tabuleiro[i]);
     }
-    heuristica = manhattan + calcularConflitosLineares();
+    
+    if (tipo_heuristica == H_MANHATTAN) {
+        heuristica = manhattan;
+    } else {
+        heuristica = manhattan + calcularConflitosLineares();
+    }
 }
 
 // Verificações

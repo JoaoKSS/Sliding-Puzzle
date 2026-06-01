@@ -33,16 +33,23 @@ enum Direcao {
     NENHUMA
 };
 
+enum TipoHeuristica {
+    H_NENHUMA = 0,
+    H_MANHATTAN,
+    H_CONFLITOS
+};
+
 Direcao direcaoOposta(Direcao d);
 string nomeDirecao(Direcao d);
 
 class Estado {
 public:
+    static TipoHeuristica tipo_heuristica;
     uint8_t tabuleiro[16]; 
     int tamanho;
     int n_pecas;
     int pos_vazio;
-    int heuristica; // h(n) = Manhattan + Conflitos Lineares
+    int heuristica; // h(n) dependente da escolha
     int custo_g; // g(n)
     Direcao ultimo_movimento;
     int pai_idx;

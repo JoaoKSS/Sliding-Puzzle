@@ -23,6 +23,7 @@
 #include <vector>
 #include <sys/stat.h>
 #include <filesystem>
+#include <cmath>
 
 using namespace std;
 
@@ -30,7 +31,7 @@ void criarDiretorio(const std::string& caminho) {
     std::filesystem::create_directories(caminho);
 }
 
-vector<vector<uint8_t>> lerInstancias(const string& arquivo, int n_pecas) {
+vector<vector<uint8_t>> lerInstancias(const string& arquivo) {
     vector<vector<uint8_t>> instancias;
     ifstream fin(arquivo);
     if (!fin.is_open()) {
@@ -38,6 +39,7 @@ vector<vector<uint8_t>> lerInstancias(const string& arquivo, int n_pecas) {
         return instancias;
     }
 
+    int expected_size = 0;
     string linha;
     while (getline(fin, linha)) {
         if (linha.empty()) continue;
@@ -47,8 +49,14 @@ vector<vector<uint8_t>> lerInstancias(const string& arquivo, int n_pecas) {
         while (iss >> val) {
             tab.push_back((uint8_t)val);
         }
-        if ((int)tab.size() == n_pecas) {
+        if (expected_size == 0 && tab.size() > 0) {
+            expected_size = tab.size();
+        }
+        if ((int)tab.size() == expected_size) {
             instancias.push_back(tab);
+        } else if (tab.size() > 0) {
+            cerr << "Aviso: Linha ignorada pois o tamanho (" << tab.size() 
+                 << ") difere do esperado (" << expected_size << ")." << endl;
         }
     }
     fin.close();
@@ -56,6 +64,7 @@ vector<vector<uint8_t>> lerInstancias(const string& arquivo, int n_pecas) {
 }
 
 void escreverResultado(const string& arquivo, int num_instancia, const vector<uint8_t>& tab_original, int tamanho, bool eh_a_estrela,
+                       const string& heuristica_str,
                        bool solucao_encontrada, int custo, int estados,
                        double tempo, const string& mensagem,
                        const vector<Estado>& caminho) {
@@ -69,6 +78,7 @@ void escreverResultado(const string& arquivo, int num_instancia, const vector<ui
 
     fout << "============================================================" << endl;
     fout << "  Algoritmo: " << nome_algo << endl;
+    fout << "  Heuristica: " << heuristica_str << endl;
     fout << "  Puzzle: " << (tamanho == 3 ? "8" : "15") << "-puzzle" << endl;
     fout << "  Instancia: " << num_instancia << endl;
     fout << "============================================================" << endl;
@@ -120,23 +130,54 @@ void escreverResultado(const string& arquivo, int num_instancia, const vector<ui
 }
 
 int main(int argc, char* argv[]) {
-    if (argc < 4) {
-        cout << "Uso: ./puzzle <arquivo_instancias> <tamanho_lado> <algoritmo> [timeout_s]" << endl;
-        cout << "  tamanho_lado: 3 (8-puzzle) ou 4 (15-puzzle)" << endl;
+    if (argc < 3) {
+        cout << "Uso: ./puzzle <arquivo_instancias> <algoritmo> [heuristica] [timeout_s]" << endl;
         cout << "  algoritmo: a_estrela, ida_estrela, ambos" << endl;
-        cout << "  timeout_s: limite de tempo por instancia (padrao: 30s)" << endl;
+        cout << "  heuristica: nenhuma, manhattan, conflitos (padrao: conflitos)" << endl;
+        cout << "  timeout_s: limite de tempo por instancia (padrao: 300s)" << endl;
         cout << endl;
         cout << "Exemplo:" << endl;
-        cout << "  ./puzzle 8puzzle_instances.txt 3 ambos" << endl;
-        cout << "  ./puzzle 15puzzle_instances.txt 4 ambos 60" << endl;
+        cout << "  ./puzzle 8puzzle_instances.txt ambos" << endl;
+        cout << "  ./puzzle 15puzzle_instances.txt ambos manhattan 60" << endl;
         return 1;
     }
 
     string arquivo = argv[1];
-    int tamanho = stoi(argv[2]);
-    string algoritmo = argv[3];
-    double timeout = (argc >= 5) ? stod(argv[4]) : 120.0;
-    int n_pecas = tamanho * tamanho;
+    string algoritmo = argv[2];
+    
+    string heuristica_str = "conflitos";
+    double timeout = 300;
+    
+    if (argc >= 4) {
+        string arg3 = argv[3];
+        if (arg3 == "nenhuma" || arg3 == "manhattan" || arg3 == "conflitos") {
+            heuristica_str = arg3;
+            if (argc >= 5) {
+                timeout = stod(argv[4]);
+            }
+        } else {
+            timeout = stod(arg3); // Assume timeout if it doesn't match a heuristic name
+        }
+    }
+    
+    if (heuristica_str == "nenhuma") Estado::tipo_heuristica = H_NENHUMA;
+    else if (heuristica_str == "manhattan") Estado::tipo_heuristica = H_MANHATTAN;
+    else Estado::tipo_heuristica = H_CONFLITOS;
+
+    // Ler instâncias primeiro para deduzir o tamanho
+    vector<vector<uint8_t>> instancias = lerInstancias(arquivo);
+    if (instancias.empty()) {
+        cerr << "Nenhuma instancia valida encontrada no arquivo." << endl;
+        return 1;
+    }
+
+    int n_pecas = instancias[0].size();
+    int tamanho = round(sqrt(n_pecas));
+
+    if (tamanho * tamanho != n_pecas) {
+        cerr << "Erro: Número de peças (" << n_pecas << ") não forma um tabuleiro quadrado perfeito." << endl;
+        return 1;
+    }
 
     string nome_puzzle = (tamanho == 3) ? "8puzzle" : "15puzzle";
 
@@ -145,16 +186,15 @@ int main(int argc, char* argv[]) {
 
     // Criar diretórios de saída
     criarDiretorio("saidas");
-    string dir_a = "saidas/" + nome_puzzle + "_a_estrela";
-    string dir_ida = "saidas/" + nome_puzzle + "_ida_estrela";
+    string dir_a = "saidas/" + nome_puzzle + "_a_estrela_" + heuristica_str;
+    string dir_ida = "saidas/" + nome_puzzle + "_ida_estrela_" + heuristica_str;
     if (rodar_a)   criarDiretorio(dir_a);
     if (rodar_ida) criarDiretorio(dir_ida);
 
-    // Ler instâncias
-    vector<vector<uint8_t>> instancias = lerInstancias(arquivo, n_pecas);
     cout << "Instancias lidas: " << instancias.size() << endl;
     cout << "Puzzle: " << nome_puzzle << endl;
     cout << "Algoritmo(s): " << algoritmo << endl;
+    cout << "Heuristica: " << heuristica_str << endl;
     cout << "Timeout por instancia: " << timeout << "s" << endl;
     cout << endl;
 
@@ -192,7 +232,7 @@ int main(int argc, char* argv[]) {
             }
 
             string arq_saida = dir_a + "/instancia_" + to_string(num) + ".txt";
-            escreverResultado(arq_saida, num, instancias[i], tamanho, true,
+            escreverResultado(arq_saida, num, instancias[i], tamanho, true, heuristica_str,
                               res.solucao_encontrada, res.custo_solucao,
                               res.estados_avaliados, res.tempo_execucao,
                               res.mensagem, res.caminho);
@@ -219,7 +259,7 @@ int main(int argc, char* argv[]) {
             }
 
             string arq_saida = dir_ida + "/instancia_" + to_string(num) + ".txt";
-            escreverResultado(arq_saida, num, instancias[i], tamanho, false,
+            escreverResultado(arq_saida, num, instancias[i], tamanho, false, heuristica_str,
                               res.solucao_encontrada, res.custo_solucao,
                               res.estados_avaliados, res.tempo_execucao,
                               res.mensagem, res.caminho);
