@@ -16,7 +16,7 @@
 
 using namespace std;
 
-// Valor sentinela: solucao encontrada
+// Valor solucao encontrada
 static const int ENCONTRADO = -1;
 
 // Contadores globais para a recursao
@@ -35,7 +35,7 @@ static void verificarTimeout() {
     }
 }
 
-// Busca recursiva em profundidade com corte por limiar.
+// Busca recursiva em profundidade com corte por limiar
 
 static int busca(Estado& atual, int limiar, vector<Estado>& caminho) {
     int f_val = atual.f();

@@ -51,7 +51,7 @@ ResultadoAEstrela buscarAEstrela(const Estado& estado_inicial, double timeout_se
 
     auto inicio = chrono::high_resolution_clock::now();
 
-    // Vetor de todos os estados (para reconstrução do caminho)
+    // Vetor de todos os estados para reconstrução do caminho
     vector<Estado> todos_estados;
     todos_estados.reserve(500000);
 

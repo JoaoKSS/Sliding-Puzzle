@@ -156,7 +156,7 @@ int main(int argc, char* argv[]) {
                 timeout = stod(argv[4]);
             }
         } else {
-            timeout = stod(arg3); // Assume timeout if it doesn't match a heuristic name
+            timeout = stod(arg3);
         }
     }
     
@@ -184,7 +184,7 @@ int main(int argc, char* argv[]) {
     bool rodar_a = (algoritmo == "a_estrela" || algoritmo == "ambos");
     bool rodar_ida = (algoritmo == "ida_estrela" || algoritmo == "ambos");
 
-    // Criar diretórios de saída
+    // Cria diretórios de saída
     criarDiretorio("saidas");
     string dir_a = "saidas/" + nome_puzzle + "_a_estrela_" + heuristica_str;
     string dir_ida = "saidas/" + nome_puzzle + "_ida_estrela_" + heuristica_str;
