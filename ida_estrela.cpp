@@ -112,7 +112,7 @@ ResultadoIDAEstrela buscarIDAEstrela(const Estado& estado_inicial, int /*limite_
             auto fim = chrono::high_resolution_clock::now();
             resultado.tempo_execucao = chrono::duration<double>(fim - g_inicio).count();
             resultado.solucao_encontrada = true;
-            resultado.estados_avaliados = (int)g_estados_avaliados;
+            resultado.estados_avaliados = g_estados_avaliados;
 
             reverse(caminho.begin(), caminho.end());
             resultado.caminho = caminho;
@@ -124,7 +124,7 @@ ResultadoIDAEstrela buscarIDAEstrela(const Estado& estado_inicial, int /*limite_
         if (g_timeout_atingido || t == INT_MAX) {
             auto fim = chrono::high_resolution_clock::now();
             resultado.tempo_execucao = chrono::duration<double>(fim - g_inicio).count();
-            resultado.estados_avaliados = (int)g_estados_avaliados;
+            resultado.estados_avaliados = g_estados_avaliados;
             resultado.mensagem = "Timeout atingido (" + to_string((int)timeout_segundos) + "s, " + to_string(g_estados_avaliados) + " estados).";
             return resultado;
         }

@@ -65,7 +65,7 @@ vector<vector<uint8_t>> lerInstancias(const string& arquivo) {
 
 void escreverResultado(const string& arquivo, int num_instancia, const vector<uint8_t>& tab_original, int tamanho, bool eh_a_estrela,
                        const string& heuristica_str,
-                       bool solucao_encontrada, int custo, int estados,
+                       bool solucao_encontrada, int custo, long long estados,
                        double tempo, const string& mensagem,
                        const vector<Estado>& caminho) {
     ofstream fout(arquivo);

@@ -17,7 +17,7 @@ using namespace std;
 struct ResultadoIDAEstrela {
     bool solucao_encontrada;
     int custo_solucao;
-    int estados_avaliados;
+    long long estados_avaliados;
     double tempo_execucao;
     vector<Estado> caminho;
     string mensagem;
