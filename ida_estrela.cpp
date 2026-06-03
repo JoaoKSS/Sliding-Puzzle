@@ -81,11 +81,6 @@ ResultadoIDAEstrela buscarIDAEstrela(const Estado& estado_inicial, int /*limite_
     resultado.estados_avaliados = 0;
     resultado.tempo_execucao = 0.0;
 
-    if (!estado_inicial.temSolucao()) {
-        resultado.mensagem = "Instancia sem solucao (inversoes invalidas).";
-        return resultado;
-    }
-
     if (estado_inicial.ehObjetivo()) {
         resultado.solucao_encontrada = true;
         resultado.custo_solucao = 0;

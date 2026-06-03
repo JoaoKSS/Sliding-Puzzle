@@ -67,7 +67,6 @@ public:
     int calcularConflitosLineares() const;
 
     bool ehObjetivo() const;
-    bool temSolucao() const;
 
     vector<Estado> gerarFilhos() const;
     bool mover(Direcao d, Estado& novo) const;

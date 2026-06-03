@@ -183,36 +183,6 @@ bool Estado::ehObjetivo() const {
     return true;
 }
 
-/**
- * Verifica se o puzzle é solucionável.
- *
- * Com objetivo tendo 0 na posição [0][0]:
- * - 8-puzzle (N ímpar): solucionável se inversões é par.
- * - 15-puzzle (N par): solucionável se (inversões + linha_do_vazio) é par.
- * (linha_do_vazio contada de cima, 0-indexada)
- */
-bool Estado::temSolucao() const {
-    int inversoes = 0;
-    for (int i = 0; i < n_pecas; i++) {
-        if (tabuleiro[i] == 0) continue;
-        for (int j = i + 1; j < n_pecas; j++) {
-            if (tabuleiro[j] == 0) continue;
-            if (tabuleiro[i] > tabuleiro[j]) {
-                inversoes++;
-            }
-        }
-    }
-
-    if (tamanho % 2 == 1) {
-        // N ímpar (8-puzzle): par de inversões = solucionável
-        return (inversoes % 2 == 0);
-    } else {
-        // N par (15-puzzle): (inversões + linha do vazio) deve ser par
-        int linha_vazio = pos_vazio / tamanho;
-        return ((inversoes + linha_vazio) % 2 == 0);
-    }
-}
-
 // Geração de filhos
 vector<Estado> Estado::gerarFilhos() const {
     vector<Estado> filhos;
