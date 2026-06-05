@@ -1,18 +1,3 @@
-/**
- * main.cpp - Programa principal para resolver 8-puzzle e 15-puzzle
- *
- * Le instancias de arquivos e executa A* e IDA* para cada uma.
- * Gera arquivos de saida separados por instancia e por algoritmo.
- *
- * Uso:
- *   ./puzzle <arquivo_instancias> <tamanho_lado> <algoritmo> [timeout_s]
- *
- * Referencia:
- *   Korf, R.E. (1985). Depth-First Iterative-Deepening.
- *   Hart, Nilsson & Raphael (1968). A Formal Basis for Heuristic Search.
- *   Hansson, Mayer & Yung (1992). Criticizing Solutions to Relaxed Models.
- */
-
 #include "estado.h"
 #include "a_estrela.h"
 #include "ida_estrela.h"

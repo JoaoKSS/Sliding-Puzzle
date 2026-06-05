@@ -1,14 +1,3 @@
-/**
- * ida_estrela.cpp - Implementacao do IDA* (Korf, 1985)
- *
- * Busca em profundidade com limiar crescente de f(n)=g(n)+h(n).
- * A cada iteracao, o limiar eh o menor f que excedeu o limiar anterior.
- * Memoria O(d), ideal para puzzles grandes como o 15-puzzle.
- *
- * Heuristica: Manhattan + Conflitos Lineares (Hansson et al., 1992)
- * Usa timeout por instancia para evitar loops.
- */
-
 #include "ida_estrela.h"
 #include <chrono>
 #include <algorithm>

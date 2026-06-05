@@ -1,10 +1,3 @@
-/**
- * ida_estrela.h - Algoritmo IDA* (Korf, 1985)
- *
- * Busca em profundidade iterativa com limiar f(n).
- * Usa memória O(d), ideal para 15-puzzle.
- */
-
 #ifndef IDA_ESTRELA_H
 #define IDA_ESTRELA_H
 

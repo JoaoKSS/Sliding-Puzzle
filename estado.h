@@ -1,20 +1,3 @@
-/**
- * estado.h - Representação do estado do puzzle (8-puzzle e 15-puzzle)
- *
- * Referências:
- *   - Korf, R.E. (1985). "Depth-First Iterative-Deepening: An Optimal
- *     Admissible Tree Search". Artificial Intelligence, 27(1), 97-109.
- *   - Hansson, O., Mayer, A., Yung, M. (1992). "Criticizing Solutions to
- *     Relaxed Models Yields Powerful Admissible Heuristics".
- *
- * Estado objetivo:
- *   8-puzzle:  0 1 2 3 4 5 6 7 8
- *   15-puzzle: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
- *   (0 = espaço vazio na posição [0][0], restante ordenado)
- *
- * Heurística: Manhattan + Conflitos Lineares (admissível e consistente).
- */
-
 #ifndef ESTADO_H
 #define ESTADO_H
 

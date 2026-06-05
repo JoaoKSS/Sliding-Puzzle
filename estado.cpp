@@ -1,15 +1,3 @@
-/**
- * estado.cpp - Implementação do estado do puzzle
- *
- * Estado objetivo: 0 1 2 3 4 5 6 7 8 (8-puzzle)
- *                  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 (15-puzzle)
- * Onde 0 = espaço vazio na posição [0][0].
- *
- * Peça p tem posição objetivo = p (posição linear).
- *
- * Heurística: Manhattan + Conflitos Lineares (Hansson et al., 1992)
- */
-
 #include "estado.h"
 #include <cmath>
 #include <sstream>
@@ -63,12 +51,6 @@ Estado::Estado(const vector<uint8_t>& tab, int tam)
 }
 
 // Heurística: Manhattan + Conflitos Lineares
-
-/**
- * Posição objetivo da peça p é a própria posição p.
- * Objetivo: 0 1 2 3 4 5 6 7 8 (8-puzzle)
- *           0 1 2 ... 15 (15-puzzle)
- */
 int Estado::manhattanPeca(int pos, uint8_t peca) const {
     if (peca == 0) return 0;
     // Posição objetivo da peça p é p
@@ -80,16 +62,6 @@ int Estado::manhattanPeca(int pos, uint8_t peca) const {
     return abs(linha_atual - linha_obj) + abs(col_atual - col_obj);
 }
 
-/**
- * Conflitos Lineares (Hansson, Mayer & Yung, 1992):
- *
- * Duas peças tj e tk estão em conflito linear se:
- * 1) Ambas estão na mesma linha (ou coluna)
- * 2) A posição objetivo de ambas é nessa mesma linha (ou coluna)
- * 3) Estão em ordem invertida em relação ao objetivo
- *
- * Cada conflito requer pelo menos 2 movimentos adicionais.
- */
 int Estado::calcularConflitosLineares() const {
     int conflitos = 0;
 
@@ -172,10 +144,6 @@ void Estado::calcularHeuristica() {
 
 // Verificações
 
-/**
- * Objetivo: tabuleiro[i] == i para todo i.
- * Ou seja: 0 1 2 3 4 5 6 7 8 (8-puzzle)
- */
 bool Estado::ehObjetivo() const {
     for (int i = 0; i < n_pecas; i++) {
         if (tabuleiro[i] != (uint8_t)i) return false;

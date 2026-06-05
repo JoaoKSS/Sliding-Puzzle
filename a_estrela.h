@@ -1,10 +1,3 @@
-/**
- * a_estrela.h - Algoritmo A* (Hart, Nilsson & Raphael, 1968)
- *
- * Heurística: Manhattan + Conflitos Lineares (Hansson et al., 1992).
- * Usa timeout por instância para evitar loops.
- */
-
 #ifndef A_ESTRELA_H
 #define A_ESTRELA_H
 

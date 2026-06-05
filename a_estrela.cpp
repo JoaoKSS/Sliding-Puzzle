@@ -1,15 +1,3 @@
-/**
- * a_estrela.cpp - Implementação do algoritmo A*
- *
- * Implementação clássica do A* (Hart, Nilsson & Raphael, 1968)
- * com fila de prioridade (min-heap) e conjunto fechado (hash set).
- *
- * Heurística: Manhattan + Conflitos Lineares (Hansson et al., 1992),
- * admissível e consistente, garantindo optimalidade.
- *
- * Usa timeout por instância para evitar loops.
- */
-
 #include "a_estrela.h"
 #include <queue>
 #include <unordered_set>
