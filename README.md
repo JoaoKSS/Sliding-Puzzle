@@ -1,5 +1,10 @@
 # Sliding Puzzle
 
+![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
+![Python](https://img.shields.io/badge/Python-%3E%3D3.8-blue)
+![Build](https://img.shields.io/badge/Build-Makefile-orange)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+
 Aplicação de linha de comando em C++ que resolve o **8‑puzzle** e o **15‑puzzle** usando os algoritmos **A*​** e **IDA*​**. O programa permite escolher a heurística a ser usada:
 
 - `nenhuma` – sem heurística (h = 0), busca de custo uniforme.
