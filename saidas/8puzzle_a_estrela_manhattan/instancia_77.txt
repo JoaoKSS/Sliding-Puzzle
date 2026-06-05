@@ -1,0 +1,131 @@
+============================================================
+  Algoritmo: A*
+  Heuristica: manhattan
+  Puzzle: 8-puzzle
+  Instancia: 77
+============================================================
+
+--- Estado Inicial ---
+  3  8  4
+  5  7  1
+  0  6  2
+
+--- Estado Objetivo ---
+  0  1  2
+  3  4  5
+  6  7  8
+
+--- Resultado ---
+Status: Solucao otima encontrada.
+Solucao encontrada: Sim
+Custo da solucao (movimentos): 20
+Estados avaliados: 362
+Tempo de execucao: 8.3209e-05 segundos
+
+--- Solucao Passo a Passo ---
+Passo 0 (Inicial):
+  3  8  4
+  5  7  1
+  0  6  2
+
+Passo 1 - Mover espaco vazio para: Direita
+  3  8  4
+  5  7  1
+  6  0  2
+
+Passo 2 - Mover espaco vazio para: Cima
+  3  8  4
+  5  0  1
+  6  7  2
+
+Passo 3 - Mover espaco vazio para: Esquerda
+  3  8  4
+  0  5  1
+  6  7  2
+
+Passo 4 - Mover espaco vazio para: Baixo
+  3  8  4
+  6  5  1
+  0  7  2
+
+Passo 5 - Mover espaco vazio para: Direita
+  3  8  4
+  6  5  1
+  7  0  2
+
+Passo 6 - Mover espaco vazio para: Cima
+  3  8  4
+  6  0  1
+  7  5  2
+
+Passo 7 - Mover espaco vazio para: Cima
+  3  0  4
+  6  8  1
+  7  5  2
+
+Passo 8 - Mover espaco vazio para: Direita
+  3  4  0
+  6  8  1
+  7  5  2
+
+Passo 9 - Mover espaco vazio para: Baixo
+  3  4  1
+  6  8  0
+  7  5  2
+
+Passo 10 - Mover espaco vazio para: Baixo
+  3  4  1
+  6  8  2
+  7  5  0
+
+Passo 11 - Mover espaco vazio para: Esquerda
+  3  4  1
+  6  8  2
+  7  0  5
+
+Passo 12 - Mover espaco vazio para: Cima
+  3  4  1
+  6  0  2
+  7  8  5
+
+Passo 13 - Mover espaco vazio para: Cima
+  3  0  1
+  6  4  2
+  7  8  5
+
+Passo 14 - Mover espaco vazio para: Direita
+  3  1  0
+  6  4  2
+  7  8  5
+
+Passo 15 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  4  0
+  7  8  5
+
+Passo 16 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  4  5
+  7  8  0
+
+Passo 17 - Mover espaco vazio para: Esquerda
+  3  1  2
+  6  4  5
+  7  0  8
+
+Passo 18 - Mover espaco vazio para: Esquerda
+  3  1  2
+  6  4  5
+  0  7  8
+
+Passo 19 - Mover espaco vazio para: Cima
+  3  1  2
+  0  4  5
+  6  7  8
+
+Passo 20 - Mover espaco vazio para: Cima
+  0  1  2
+  3  4  5
+  6  7  8
+
+============================================================

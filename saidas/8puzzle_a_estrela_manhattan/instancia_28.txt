@@ -1,0 +1,96 @@
+============================================================
+  Algoritmo: A*
+  Heuristica: manhattan
+  Puzzle: 8-puzzle
+  Instancia: 28
+============================================================
+
+--- Estado Inicial ---
+  3  0  2
+  6  1  4
+  5  7  8
+
+--- Estado Objetivo ---
+  0  1  2
+  3  4  5
+  6  7  8
+
+--- Resultado ---
+Status: Solucao otima encontrada.
+Solucao encontrada: Sim
+Custo da solucao (movimentos): 13
+Estados avaliados: 69
+Tempo de execucao: 1.79e-05 segundos
+
+--- Solucao Passo a Passo ---
+Passo 0 (Inicial):
+  3  0  2
+  6  1  4
+  5  7  8
+
+Passo 1 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  0  4
+  5  7  8
+
+Passo 2 - Mover espaco vazio para: Direita
+  3  1  2
+  6  4  0
+  5  7  8
+
+Passo 3 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  4  8
+  5  7  0
+
+Passo 4 - Mover espaco vazio para: Esquerda
+  3  1  2
+  6  4  8
+  5  0  7
+
+Passo 5 - Mover espaco vazio para: Esquerda
+  3  1  2
+  6  4  8
+  0  5  7
+
+Passo 6 - Mover espaco vazio para: Cima
+  3  1  2
+  0  4  8
+  6  5  7
+
+Passo 7 - Mover espaco vazio para: Direita
+  3  1  2
+  4  0  8
+  6  5  7
+
+Passo 8 - Mover espaco vazio para: Baixo
+  3  1  2
+  4  5  8
+  6  0  7
+
+Passo 9 - Mover espaco vazio para: Direita
+  3  1  2
+  4  5  8
+  6  7  0
+
+Passo 10 - Mover espaco vazio para: Cima
+  3  1  2
+  4  5  0
+  6  7  8
+
+Passo 11 - Mover espaco vazio para: Esquerda
+  3  1  2
+  4  0  5
+  6  7  8
+
+Passo 12 - Mover espaco vazio para: Esquerda
+  3  1  2
+  0  4  5
+  6  7  8
+
+Passo 13 - Mover espaco vazio para: Cima
+  0  1  2
+  3  4  5
+  6  7  8
+
+============================================================

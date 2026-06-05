@@ -1,0 +1,280 @@
+============================================================
+  Algoritmo: A*
+  Heuristica: conflitos
+  Puzzle: 15-puzzle
+  Instancia: 55
+============================================================
+
+--- Estado Inicial ---
+  13  8  14  3
+  9  1  0  7
+  15  5  4  10
+  12  2  6  11
+
+--- Estado Objetivo ---
+  0  1  2  3
+  4  5  6  7
+  8  9  10  11
+  12  13  14  15
+
+--- Resultado ---
+Status: Solucao otima encontrada.
+Solucao encontrada: Sim
+Custo da solucao (movimentos): 41
+Estados avaliados: 27734
+Tempo de execucao: 0.0186885 segundos
+
+--- Solucao Passo a Passo ---
+Passo 0 (Inicial):
+ 13  8 14  3
+  9  1  0  7
+ 15  5  4 10
+ 12  2  6 11
+
+Passo 1 - Mover espaco vazio para: Baixo
+ 13  8 14  3
+  9  1  4  7
+ 15  5  0 10
+ 12  2  6 11
+
+Passo 2 - Mover espaco vazio para: Esquerda
+ 13  8 14  3
+  9  1  4  7
+ 15  0  5 10
+ 12  2  6 11
+
+Passo 3 - Mover espaco vazio para: Baixo
+ 13  8 14  3
+  9  1  4  7
+ 15  2  5 10
+ 12  0  6 11
+
+Passo 4 - Mover espaco vazio para: Direita
+ 13  8 14  3
+  9  1  4  7
+ 15  2  5 10
+ 12  6  0 11
+
+Passo 5 - Mover espaco vazio para: Cima
+ 13  8 14  3
+  9  1  4  7
+ 15  2  0 10
+ 12  6  5 11
+
+Passo 6 - Mover espaco vazio para: Esquerda
+ 13  8 14  3
+  9  1  4  7
+ 15  0  2 10
+ 12  6  5 11
+
+Passo 7 - Mover espaco vazio para: Esquerda
+ 13  8 14  3
+  9  1  4  7
+  0 15  2 10
+ 12  6  5 11
+
+Passo 8 - Mover espaco vazio para: Cima
+ 13  8 14  3
+  0  1  4  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 9 - Mover espaco vazio para: Cima
+  0  8 14  3
+ 13  1  4  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 10 - Mover espaco vazio para: Direita
+  8  0 14  3
+ 13  1  4  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 11 - Mover espaco vazio para: Baixo
+  8  1 14  3
+ 13  0  4  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 12 - Mover espaco vazio para: Direita
+  8  1 14  3
+ 13  4  0  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 13 - Mover espaco vazio para: Cima
+  8  1  0  3
+ 13  4 14  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 14 - Mover espaco vazio para: Esquerda
+  8  0  1  3
+ 13  4 14  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 15 - Mover espaco vazio para: Baixo
+  8  4  1  3
+ 13  0 14  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 16 - Mover espaco vazio para: Direita
+  8  4  1  3
+ 13 14  0  7
+  9 15  2 10
+ 12  6  5 11
+
+Passo 17 - Mover espaco vazio para: Baixo
+  8  4  1  3
+ 13 14  2  7
+  9 15  0 10
+ 12  6  5 11
+
+Passo 18 - Mover espaco vazio para: Baixo
+  8  4  1  3
+ 13 14  2  7
+  9 15  5 10
+ 12  6  0 11
+
+Passo 19 - Mover espaco vazio para: Esquerda
+  8  4  1  3
+ 13 14  2  7
+  9 15  5 10
+ 12  0  6 11
+
+Passo 20 - Mover espaco vazio para: Cima
+  8  4  1  3
+ 13 14  2  7
+  9  0  5 10
+ 12 15  6 11
+
+Passo 21 - Mover espaco vazio para: Cima
+  8  4  1  3
+ 13  0  2  7
+  9 14  5 10
+ 12 15  6 11
+
+Passo 22 - Mover espaco vazio para: Esquerda
+  8  4  1  3
+  0 13  2  7
+  9 14  5 10
+ 12 15  6 11
+
+Passo 23 - Mover espaco vazio para: Cima
+  0  4  1  3
+  8 13  2  7
+  9 14  5 10
+ 12 15  6 11
+
+Passo 24 - Mover espaco vazio para: Direita
+  4  0  1  3
+  8 13  2  7
+  9 14  5 10
+ 12 15  6 11
+
+Passo 25 - Mover espaco vazio para: Direita
+  4  1  0  3
+  8 13  2  7
+  9 14  5 10
+ 12 15  6 11
+
+Passo 26 - Mover espaco vazio para: Baixo
+  4  1  2  3
+  8 13  0  7
+  9 14  5 10
+ 12 15  6 11
+
+Passo 27 - Mover espaco vazio para: Baixo
+  4  1  2  3
+  8 13  5  7
+  9 14  0 10
+ 12 15  6 11
+
+Passo 28 - Mover espaco vazio para: Baixo
+  4  1  2  3
+  8 13  5  7
+  9 14  6 10
+ 12 15  0 11
+
+Passo 29 - Mover espaco vazio para: Esquerda
+  4  1  2  3
+  8 13  5  7
+  9 14  6 10
+ 12  0 15 11
+
+Passo 30 - Mover espaco vazio para: Cima
+  4  1  2  3
+  8 13  5  7
+  9  0  6 10
+ 12 14 15 11
+
+Passo 31 - Mover espaco vazio para: Cima
+  4  1  2  3
+  8  0  5  7
+  9 13  6 10
+ 12 14 15 11
+
+Passo 32 - Mover espaco vazio para: Direita
+  4  1  2  3
+  8  5  0  7
+  9 13  6 10
+ 12 14 15 11
+
+Passo 33 - Mover espaco vazio para: Baixo
+  4  1  2  3
+  8  5  6  7
+  9 13  0 10
+ 12 14 15 11
+
+Passo 34 - Mover espaco vazio para: Direita
+  4  1  2  3
+  8  5  6  7
+  9 13 10  0
+ 12 14 15 11
+
+Passo 35 - Mover espaco vazio para: Baixo
+  4  1  2  3
+  8  5  6  7
+  9 13 10 11
+ 12 14 15  0
+
+Passo 36 - Mover espaco vazio para: Esquerda
+  4  1  2  3
+  8  5  6  7
+  9 13 10 11
+ 12 14  0 15
+
+Passo 37 - Mover espaco vazio para: Esquerda
+  4  1  2  3
+  8  5  6  7
+  9 13 10 11
+ 12  0 14 15
+
+Passo 38 - Mover espaco vazio para: Cima
+  4  1  2  3
+  8  5  6  7
+  9  0 10 11
+ 12 13 14 15
+
+Passo 39 - Mover espaco vazio para: Esquerda
+  4  1  2  3
+  8  5  6  7
+  0  9 10 11
+ 12 13 14 15
+
+Passo 40 - Mover espaco vazio para: Cima
+  4  1  2  3
+  0  5  6  7
+  8  9 10 11
+ 12 13 14 15
+
+Passo 41 - Mover espaco vazio para: Cima
+  0  1  2  3
+  4  5  6  7
+  8  9 10 11
+ 12 13 14 15
+
+============================================================

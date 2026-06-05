@@ -1,0 +1,106 @@
+============================================================
+  Algoritmo: IDA*
+  Heuristica: conflitos
+  Puzzle: 8-puzzle
+  Instancia: 85
+============================================================
+
+--- Estado Inicial ---
+  2  1  5
+  3  8  0
+  6  7  4
+
+--- Estado Objetivo ---
+  0  1  2
+  3  4  5
+  6  7  8
+
+--- Resultado ---
+Status: Solucao otima encontrada.
+Solucao encontrada: Sim
+Custo da solucao (movimentos): 15
+Estados avaliados: 111
+Tempo de execucao: 2.3772e-05 segundos
+
+--- Solucao Passo a Passo ---
+Passo 0 (Inicial):
+  2  1  5
+  3  8  0
+  6  7  4
+
+Passo 1 - Mover espaco vazio para: Esquerda
+  2  1  5
+  3  0  8
+  6  7  4
+
+Passo 2 - Mover espaco vazio para: Cima
+  2  0  5
+  3  1  8
+  6  7  4
+
+Passo 3 - Mover espaco vazio para: Esquerda
+  0  2  5
+  3  1  8
+  6  7  4
+
+Passo 4 - Mover espaco vazio para: Baixo
+  3  2  5
+  0  1  8
+  6  7  4
+
+Passo 5 - Mover espaco vazio para: Baixo
+  3  2  5
+  6  1  8
+  0  7  4
+
+Passo 6 - Mover espaco vazio para: Direita
+  3  2  5
+  6  1  8
+  7  0  4
+
+Passo 7 - Mover espaco vazio para: Direita
+  3  2  5
+  6  1  8
+  7  4  0
+
+Passo 8 - Mover espaco vazio para: Cima
+  3  2  5
+  6  1  0
+  7  4  8
+
+Passo 9 - Mover espaco vazio para: Cima
+  3  2  0
+  6  1  5
+  7  4  8
+
+Passo 10 - Mover espaco vazio para: Esquerda
+  3  0  2
+  6  1  5
+  7  4  8
+
+Passo 11 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  0  5
+  7  4  8
+
+Passo 12 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  4  5
+  7  0  8
+
+Passo 13 - Mover espaco vazio para: Esquerda
+  3  1  2
+  6  4  5
+  0  7  8
+
+Passo 14 - Mover espaco vazio para: Cima
+  3  1  2
+  0  4  5
+  6  7  8
+
+Passo 15 - Mover espaco vazio para: Cima
+  0  1  2
+  3  4  5
+  6  7  8
+
+============================================================

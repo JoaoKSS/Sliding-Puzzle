@@ -1,0 +1,121 @@
+============================================================
+  Algoritmo: A*
+  Heuristica: manhattan
+  Puzzle: 8-puzzle
+  Instancia: 33
+============================================================
+
+--- Estado Inicial ---
+  0  6  3
+  5  8  2
+  1  7  4
+
+--- Estado Objetivo ---
+  0  1  2
+  3  4  5
+  6  7  8
+
+--- Resultado ---
+Status: Solucao otima encontrada.
+Solucao encontrada: Sim
+Custo da solucao (movimentos): 18
+Estados avaliados: 49
+Tempo de execucao: 1.2508e-05 segundos
+
+--- Solucao Passo a Passo ---
+Passo 0 (Inicial):
+  0  6  3
+  5  8  2
+  1  7  4
+
+Passo 1 - Mover espaco vazio para: Direita
+  6  0  3
+  5  8  2
+  1  7  4
+
+Passo 2 - Mover espaco vazio para: Direita
+  6  3  0
+  5  8  2
+  1  7  4
+
+Passo 3 - Mover espaco vazio para: Baixo
+  6  3  2
+  5  8  0
+  1  7  4
+
+Passo 4 - Mover espaco vazio para: Esquerda
+  6  3  2
+  5  0  8
+  1  7  4
+
+Passo 5 - Mover espaco vazio para: Esquerda
+  6  3  2
+  0  5  8
+  1  7  4
+
+Passo 6 - Mover espaco vazio para: Baixo
+  6  3  2
+  1  5  8
+  0  7  4
+
+Passo 7 - Mover espaco vazio para: Direita
+  6  3  2
+  1  5  8
+  7  0  4
+
+Passo 8 - Mover espaco vazio para: Direita
+  6  3  2
+  1  5  8
+  7  4  0
+
+Passo 9 - Mover espaco vazio para: Cima
+  6  3  2
+  1  5  0
+  7  4  8
+
+Passo 10 - Mover espaco vazio para: Esquerda
+  6  3  2
+  1  0  5
+  7  4  8
+
+Passo 11 - Mover espaco vazio para: Esquerda
+  6  3  2
+  0  1  5
+  7  4  8
+
+Passo 12 - Mover espaco vazio para: Cima
+  0  3  2
+  6  1  5
+  7  4  8
+
+Passo 13 - Mover espaco vazio para: Direita
+  3  0  2
+  6  1  5
+  7  4  8
+
+Passo 14 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  0  5
+  7  4  8
+
+Passo 15 - Mover espaco vazio para: Baixo
+  3  1  2
+  6  4  5
+  7  0  8
+
+Passo 16 - Mover espaco vazio para: Esquerda
+  3  1  2
+  6  4  5
+  0  7  8
+
+Passo 17 - Mover espaco vazio para: Cima
+  3  1  2
+  0  4  5
+  6  7  8
+
+Passo 18 - Mover espaco vazio para: Cima
+  0  1  2
+  3  4  5
+  6  7  8
+
+============================================================
