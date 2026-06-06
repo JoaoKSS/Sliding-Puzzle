@@ -1,10 +1,3 @@
-# Makefile para o projeto de 8-puzzle e 15-puzzle
-# Algoritmos: A* e IDA*
-#
-# Referências:
-#   Korf (1985) - IDA*
-#   Hart, Nilsson & Raphael (1968) - A*
-
 CXX = g++
 CXXFLAGS = -O2 -std=c++17 -Wall -Wextra
 TARGET = puzzle
